@@ -1,12 +1,19 @@
 # PowerShell script: Report-VMWareVMs
 A PowerShell script that collects information about the VMs on VMWare.
 
-You can edit the last line to export the data in any form you need, by default it doest to GridView.
+You can edit the last lines to export the data in any form you need, by default it doest to GridView.
 
 ## Requirements
 
-- PowerCLI must be installed.
-- I prefix all VMWare cmdlets with 'VMWare' to avoid collision with Hyper-V cmdlets. So use the following command when importing VMWare modules: `Import-Module VMware.VimAutomation.Cis.Core -Prefix "VMWare"`
-- You must be connected to VSphere using the Connect-VMWareVIServer cmdlet (notice the VMWare prefix)
+- Script is desinged to run from your workstation
+- [PowerCLI] must be installed. (https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016)
 
-
+## Usage
+1. Open PowerShell ISE
+1. Import VMWare Core module with VMWare prefix using this command
+    `Import-Module VMware.VimAutomation.Core -Prefix "VMWare"`
+   I use this technique to avoid colliding with Hyper-V cmdlets as they share the same names.
+2. Connect to vSphere using this command,
+    `Connect-VMWareVIServer -Server <vSphereServerName> -Credential (Get-Credential)`
+4. Open the script and run it.
+5. Review the GridViews and export again to CSV if needed.
