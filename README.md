@@ -6,7 +6,7 @@ You can edit the last lines to export the data in any form you need, by default 
 ## Requirements
 
 - Script is desinged to run from your workstation
-- [PowerCLI] must be installed. (https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016)
+- [PowerCLI] (https://www.powershellgallery.com/packages/VMware.PowerCLI) must be installed. 
 
 ## Usage
 1. Open PowerShell ISE
