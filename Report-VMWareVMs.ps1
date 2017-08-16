@@ -136,7 +136,7 @@ foreach ($VM in $VMWareVMs) {
 $VMWareVMsReport |Select-Object VMName,FQDN,OperatingSystem,PowerState,CPUs,Memory,VMWareToolsStatus,VMWareToolsVersion,`
                         NumberOfDisks,HasNonFlatDisks,DisksCapacityGB,TotalCapacityGB,`
                         NumberOfNICs,NicMACAddress,NicNetworkName,NicType,NicStartConnected,`
-                        IPv4Addresses,IPv6Addresses | ogv -Title "VMWare VMs Report"6
+                        IPv4Addresses,IPv6Addresses | ogv -Title "VMWare VMs Report"
 
     #All Disks
 $VMWareDisksReport | Select-Object VMName, DiskCapacityGB, DiskType, DiskFileName, DiskDataStore | ogv -Title "VMWare Disks Report"
