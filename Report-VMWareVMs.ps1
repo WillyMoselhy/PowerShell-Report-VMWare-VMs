@@ -103,22 +103,26 @@ foreach ($VM in $VMWareVMs) {
     #endregion    
     
     #region: IP Addresses
-        $IPs = $() + ($VM2.Guest.IPAddress)
+        $IPs = $() + ($VM.Guest.IPAddress)
         if($IPs.Count -gt 0){
             $IPv4Concat = ""
             $Ipv6Concat = ""
+            $IPv4 = $false
+            $IPv6 = $false
             $IPs | foreach{    
                 #IPv4
                 if($_.indexOf(":") -eq -1){
                     $IPv4Concat += "$($_);"
+                    $IPv4=$true
                 }
                 #IPv6
                 else{
                     $IPv6Concat += "$($_);"
+                    $IPv6=$true
                 }
             }
-            $IPv4Concat = $IPv4Concat.Substring(0,$IPv4Concat.Length - 1)
-            $Ipv6Concat = $Ipv6Concat.Substring(0,$Ipv6Concat.Length - 1)
+            if($IPv4) {$IPv4Concat = $IPv4Concat.Substring(0,$IPv4Concat.Length - 1)}
+            if($Ipv6) {$Ipv6Concat = $Ipv6Concat.Substring(0,$Ipv6Concat.Length - 1)}
 
             Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "IPv4Addresses" -Value $IPv4Concat
             Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "IPv6Addresses" -Value $Ipv6Concat
@@ -136,7 +140,7 @@ foreach ($VM in $VMWareVMs) {
 $VMWareVMsReport |Select-Object VMName,FQDN,OperatingSystem,PowerState,CPUs,Memory,VMWareToolsStatus,VMWareToolsVersion,`
                         NumberOfDisks,HasNonFlatDisks,DisksCapacityGB,TotalCapacityGB,`
                         NumberOfNICs,NicMACAddress,NicNetworkName,NicType,NicStartConnected,`
-                        IPv4Addresses,IPv6Addresses | ogv -Title "VMWare VMs Report"
+                        IPv4Addresses,IPv6Addresses | ogv -Title "VMWare VMs Report" #| Export-Csv -Path D:\temp\VMWareReports\VMWareVMs.csv -NoTypeInformation
 
     #All Disks
 $VMWareDisksReport | Select-Object VMName, DiskCapacityGB, DiskType, DiskFileName, DiskDataStore | ogv -Title "VMWare Disks Report"
