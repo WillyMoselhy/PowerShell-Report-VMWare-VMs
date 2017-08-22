@@ -130,7 +130,7 @@ foreach ($VM in $VMWareVMs) {
         }
     #endregion
 
-    $VMWareVMsReport += $VMObject | Select-Object VMName,FQDN,OperatingSystem,PowerState,CPUs,Memory,VMWareToolsStatus,VMWareToolsVersion,`
+    $VMWareVMsReport += $VMObject | Select-Object VMName,FQDN,OperatingSystem,PowerState,CPUs,Memory,Firmware,VMWareToolsStatus,VMWareToolsVersion,`
                         NumberOfDisks,HasNonFlatDisks,DisksCapacityGB,TotalCapacityGB,`
                         NumberOfNICs,NicMACAddress,NicNetworkName,NicType,NicStartConnected,`
                         IPv4Addresses,IPv6Addresses
