@@ -138,7 +138,7 @@ foreach ($VM in $VMWareVMs) {
 
 #region: Produce reports using grid view - this can be changed to export to CSV or any desired format
     #All VMs
-$VMWareVMsReport |Select-Object VMName,FQDN,OperatingSystem,PowerState,CPUs,Memory,VMWareToolsStatus,VMWareToolsVersion,`
+$VMWareVMsReport |Select-Object VMName,FQDN,OperatingSystem,PowerState,CPUs,Memory,Firmware,VMWareToolsStatus,VMWareToolsVersion,`
                         NumberOfDisks,HasNonFlatDisks,DisksCapacityGB,TotalCapacityGB,`
                         NumberOfNICs,NicMACAddress,NicNetworkName,NicType,NicStartConnected,`
                         IPv4Addresses,IPv6Addresses | ogv -Title "VMWare VMs Report" #| Export-Csv -Path D:\temp\VMWareReports\VMWareVMs.csv -NoTypeInformation
