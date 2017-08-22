@@ -21,6 +21,7 @@ foreach ($VM in $VMWareVMs) {
     Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "PowerState" -Value $VM.PowerState
     Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "CPUs" -Value $VM.NumCpu
     Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "Memory" -Value $VM.MemoryGB
+    Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "Firmware" -Value $VM.ExtensionData.Config.Firmware
     Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "VMWareToolsStatus" -Value $VM.ExtensionData.Guest.ToolsStatus
     Add-Member -InputObject $VMObject -MemberType NoteProperty -Name "VMWareToolsVersion" -Value $VM.ExtensionData.Guest.ToolsVersion
 
